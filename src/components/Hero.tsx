@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export default function Hero() {
@@ -33,18 +34,18 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center opacity-0"
           style={{ animation: "fade-in 1s ease-out 1.1s forwards", opacity: 0 }}
         >
-          <a
-            href="#about"
+          <Link
+            to="/cabinet"
             className="px-8 py-3.5 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground font-medium tracking-wide rounded-sm hover:bg-primary-foreground/20 transition-all duration-300"
           >
             Découvrir le cabinet
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            to="/contact"
             className="px-8 py-3.5 bg-gold text-navy-deep font-medium tracking-wide rounded-sm hover:bg-gold-light transition-all duration-300"
           >
             Parler de votre projet
-          </a>
+          </Link>
         </div>
       </div>
 
