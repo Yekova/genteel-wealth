@@ -4,7 +4,7 @@ interface ContentBlockProps {
   features?: string[];
   variant?: "ivory" | "white";
   reversed?: boolean;
-  visual?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function ContentBlock({
@@ -13,19 +13,18 @@ export default function ContentBlock({
   features,
   variant = "white",
   reversed = false,
-  visual,
+  children,
 }: ContentBlockProps) {
   return (
-    <section className={`section-padding ${variant === "ivory" ? "section-ivory" : "bg-background"}`}>
-      <div className="max-w-6xl mx-auto">
-        <div className={`grid lg:grid-cols-2 gap-16 items-center ${reversed ? "lg:[direction:rtl]" : ""}`}>
-          <div className={`reveal ${reversed ? "lg:[direction:ltr]" : ""}`}>
-            <div className="gold-line mb-6" />
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary leading-tight mb-6">
+    <section className={`section-padding ${variant === "ivory" ? "section-ivory" : "bg-background texture-paper"}`}>
+      <div className="max-w-5xl mx-auto">
+        <div className={`grid lg:grid-cols-5 gap-14 items-start ${reversed ? "lg:[direction:rtl]" : ""}`}>
+          <div className={`lg:col-span-3 reveal ${reversed ? "lg:[direction:ltr]" : ""}`}>
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary leading-tight mb-6">
               {title}
             </h2>
             {text.map((p, i) => (
-              <p key={i} className="text-gray-text leading-relaxed mb-4 text-lg">
+              <p key={i} className="text-gray-text leading-relaxed mb-4">
                 {p}
               </p>
             ))}
@@ -33,18 +32,18 @@ export default function ContentBlock({
               <ul className="mt-6 space-y-3">
                 {features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
-                    <span className="mt-2 w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-                    <span className="text-gray-text leading-relaxed">{f}</span>
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
+                    <span className="text-gray-text leading-relaxed text-sm">{f}</span>
                   </li>
                 ))}
               </ul>
             )}
           </div>
-          <div className={`reveal reveal-delay-2 ${reversed ? "lg:[direction:ltr]" : ""}`}>
-            {visual || (
-              <div className="bg-navy/5 rounded-sm aspect-[4/3] flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full border-2 border-gold/20 flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-gold/40" />
+          <div className={`lg:col-span-2 reveal reveal-delay-2 ${reversed ? "lg:[direction:ltr]" : ""}`}>
+            {children || (
+              <div className="bg-navy/4 aspect-[4/3] flex items-center justify-center">
+                <div className="w-12 h-12 border border-gold/20 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-gold/30" />
                 </div>
               </div>
             )}
