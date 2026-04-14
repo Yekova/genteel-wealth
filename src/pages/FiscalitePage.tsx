@@ -4,25 +4,6 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
-import ContentBlock from "@/components/ContentBlock";
-import StickyScroll from "@/components/StickyScroll";
-
-const dispositifs = [
-  { title: "Déficit foncier", desc: "Réduction de votre base imposable grâce aux travaux de rénovation sur l'immobilier ancien." },
-  { title: "Dispositif Pinel / Denormandie", desc: "Réduction d'impôt sur le revenu en contrepartie d'un investissement locatif dans le neuf ou l'ancien rénové." },
-  { title: "Girardin industriel", desc: "Réduction d'impôt en investissant dans des équipements productifs en Outre-mer. Rendement fiscal élevé." },
-  { title: "PER et déductions", desc: "Optimisation fiscale via les versements déductibles sur le Plan Épargne Retraite." },
-  { title: "Holding patrimoniale", desc: "Structuration juridique pour optimiser la détention et la transmission de vos actifs." },
-  { title: "Démembrement de propriété", desc: "Stratégie avancée pour réduire l'IFI et optimiser la transmission intergénérationnelle." },
-];
-
-const methode = [
-  { title: "Diagnostic fiscal complet", description: "Analyse de votre imposition (IR, IFI, plus-values, revenus fonciers) et identification des leviers d'optimisation." },
-  { title: "Simulation chiffrée", description: "Modélisation précise de l'impact fiscal de chaque dispositif envisagé, sur votre situation réelle." },
-  { title: "Recommandations ciblées", description: "Sélection des solutions les plus pertinentes en fonction de votre profil, de vos revenus et de vos objectifs." },
-  { title: "Mise en œuvre coordonnée", description: "Déploiement des solutions retenues en coordination avec votre notaire et votre expert-comptable." },
-  { title: "Veille et ajustements", description: "Suivi des évolutions législatives et adaptation de votre stratégie fiscale année après année." },
-];
 
 export default function FiscalitePage() {
   useScrollReveal();
@@ -31,57 +12,51 @@ export default function FiscalitePage() {
     <>
       <Header />
       <PageHero
-        title="Fiscalité"
-        highlight="du patrimoine"
-        subtitle="Maîtriser votre fiscalité pour préserver et développer votre patrimoine. Des stratégies légales, éprouvées et sur-mesure."
-        breadcrumb="Fiscalité du patrimoine"
+        title="Fiscalité du patrimoine"
+        subtitle="Réduire votre pression fiscale de façon légale, mesurée et pérenne. Sans excès, sans risque inutile, sans promesse irréaliste."
+        breadcrumb="Fiscalité"
       />
 
-      <ContentBlock
-        title="L'optimisation fiscale, un levier stratégique"
-        text={[
-          "La fiscalité représente souvent le premier poste de « dépense » involontaire pour les patrimoines importants. Pourtant, de nombreux dispositifs légaux permettent de réduire significativement votre pression fiscale.",
-          "Notre rôle est d'identifier les mécanismes les plus adaptés à votre situation et de les articuler dans une stratégie cohérente et pérenne, sans excès ni risque inutile.",
-        ]}
-        features={[
-          "Analyse de l'impôt sur le revenu, IFI, plus-values",
-          "Stratégies de défiscalisation immobilière et financière",
-          "Coordination avec vos conseillers juridiques et comptables",
-        ]}
-      />
-
-      <section className="section-padding section-ivory">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 reveal">
-            <div className="gold-line mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-4">
-              Dispositifs d'optimisation fiscale
+      <section className="section-padding bg-background texture-paper">
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal">
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary leading-tight mb-6">
+              L'optimisation fiscale n'est pas un produit. C'est une méthode.
             </h2>
+            <p className="text-gray-text leading-relaxed mb-4">
+              Beaucoup de contribuables à forte imposition pensent qu'il suffit de souscrire un dispositif fiscal pour résoudre le problème. En réalité, une optimisation fiscale durable repose sur une analyse globale : revenus, patrimoine, régime matrimonial, projection de charges, anticipation des évolutions législatives.
+            </p>
+            <p className="text-gray-text leading-relaxed mb-8">
+              Notre rôle est d'identifier les leviers réellement adaptés à votre situation, de les articuler entre eux et de vérifier chaque année qu'ils restent pertinents. Nous ne vendons pas de la défiscalisation — nous construisons une stratégie fiscale cohérente.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {dispositifs.map((d, i) => (
-              <div key={d.title} className={`reveal reveal-delay-${(i % 3) + 1} bg-card border border-border/50 rounded-sm p-7 hover-lift`}>
+
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 reveal">
+            {[
+              { title: "Impôt sur le revenu", text: "Analyse de votre tranche marginale, identification des revenus à restructurer, versements PER, déficit foncier." },
+              { title: "IFI", text: "Évaluation de l'assiette, démembrement, contrats de capitalisation luxembourgeois, restructuration des actifs immobiliers." },
+              { title: "Revenus fonciers", text: "Arbitrage entre location nue et meublée, régime micro ou réel, déficit foncier, SCI à l'IS." },
+              { title: "Plus-values", text: "Anticipation des cessions, report et sursis d'imposition, apport-cession (150-0 B ter), purge successorale." },
+              { title: "Holding patrimoniale", text: "Structuration juridique pour regrouper, gérer et transmettre vos actifs de façon optimale sur le plan fiscal." },
+              { title: "Conformité", text: "Vérification systématique de la licéité des montages, traçabilité des opérations, documentation conforme aux exigences AMF et fiscales." },
+            ].map((d, i) => (
+              <div key={d.title} className={`reveal-delay-${(i % 2) + 1} border-t border-border pt-6`}>
                 <h3 className="font-heading text-lg font-semibold text-primary mb-2">{d.title}</h3>
-                <p className="text-gray-text text-sm leading-relaxed">{d.desc}</p>
+                <p className="text-gray-text text-sm leading-relaxed">{d.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <StickyScroll
-        title="Notre approche fiscale"
-        subtitle="Une méthodologie rigoureuse pour construire votre stratégie d'optimisation."
-        steps={methode}
-      />
-
       <TrustBand />
-
       <PageCTA
-        title="Réduisez votre pression fiscale"
-        subtitle="Bénéficiez d'une analyse personnalisée de votre situation fiscale et découvrez les leviers d'optimisation adaptés à votre profil."
+        title="Faisons le point sur votre fiscalité"
+        subtitle="Un audit fiscal patrimonial pour identifier vos marges de manœuvre et construire une stratégie adaptée à votre situation."
+        buttonText="Demander un audit fiscal"
+        secondaryText="Voir la page optimisation fiscale"
+        secondaryHref="/optimisation-fiscale-bordeaux"
       />
-
       <Footer />
     </>
   );

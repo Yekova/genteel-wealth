@@ -4,14 +4,6 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
-import ContentBlock from "@/components/ContentBlock";
-
-const values = [
-  { title: "Indépendance", desc: "Aucun lien capitalistique avec un groupe financier. Nous sélectionnons les solutions les plus adaptées à vos objectifs, sans conflit d'intérêts." },
-  { title: "Expertise", desc: "Une équipe de conseillers diplômés, certifiés et constamment formés aux évolutions réglementaires et fiscales." },
-  { title: "Transparence", desc: "Honoraires clairs, reporting détaillé, communication régulière. Vous savez exactement ce que nous faisons et pourquoi." },
-  { title: "Durabilité", desc: "Nous construisons des relations de long terme. Notre accompagnement s'inscrit dans la durée, avec des rendez-vous de suivi annuels." },
-];
 
 export default function CabinetPage() {
   useScrollReveal();
@@ -21,58 +13,83 @@ export default function CabinetPage() {
       <Header />
       <PageHero
         title="Le Cabinet"
-        highlight="Patrimonia Conseil"
-        subtitle="Un cabinet indépendant de conseil en gestion de patrimoine, fondé sur la conviction que chaque situation mérite une approche véritablement personnalisée."
+        subtitle="Patrimonia Conseil est un cabinet indépendant de conseil en gestion de patrimoine, installé à Bordeaux. Nous intervenons auprès de particuliers, de familles et de dirigeants d'entreprise."
         breadcrumb="Le Cabinet"
       />
 
-      <ContentBlock
-        title="Notre histoire"
-        text={[
-          "Fondé à Bordeaux, Patrimonia Conseil est né de la volonté de proposer un conseil patrimonial d'excellence, libéré des contraintes des réseaux bancaires traditionnels.",
-          "Forts de plus de 15 ans d'expérience auprès de clients privés et de chefs d'entreprise, nous avons fait le choix de l'indépendance totale pour servir exclusivement les intérêts de nos clients.",
-        ]}
-        features={[
-          "Plus de 500 familles accompagnées",
-          "Un taux de fidélisation de 98%",
-          "Une approche patrimoniale globale et sur-mesure",
-        ]}
-      />
+      <section className="section-padding bg-background texture-paper">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-5 gap-14 items-start">
+            <div className="lg:col-span-3 reveal">
+              <p className="text-[13px] tracking-widest uppercase text-gold mb-4">Qui sommes-nous</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary leading-tight mb-6">
+                Un cabinet fondé sur une conviction simple : votre conseil doit travailler pour vous, pas pour une banque
+              </h2>
+              <p className="text-gray-text leading-relaxed mb-4">
+                Patrimonia Conseil est né d'un constat partagé par ses trois associés, tous issus de la banque privée : les intérêts du client et ceux de l'établissement ne sont pas toujours alignés. Nous avons fait le choix de l'indépendance totale pour lever cette ambiguïté.
+              </p>
+              <p className="text-gray-text leading-relaxed mb-4">
+                Depuis plus de quinze ans, nous accompagnons nos clients dans la durée. Pas de produit maison, pas de quota commercial, pas de pression de réseau. Chaque recommandation est le fruit d'une analyse objective de votre situation, en architecture ouverte.
+              </p>
+              <p className="text-gray-text leading-relaxed">
+                Installés au cœur de Bordeaux, nous travaillons en étroite coordination avec les notaires, avocats fiscalistes et experts-comptables de nos clients. Cette approche pluridisciplinaire garantit une vision patrimoniale cohérente et complète.
+              </p>
+            </div>
+            <div className="lg:col-span-2 reveal reveal-delay-2">
+              <div className="border-l-2 border-gold/40 pl-8 space-y-8">
+                <div>
+                  <p className="text-2xl font-heading font-semibold text-primary">2009</p>
+                  <p className="text-sm text-gray-text mt-1">Création du cabinet à Bordeaux</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-heading font-semibold text-primary">3 associés</p>
+                  <p className="text-sm text-gray-text mt-1">Ingénierie patrimoniale, fiscalité, marchés</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-heading font-semibold text-primary">500+</p>
+                  <p className="text-sm text-gray-text mt-1">Familles et dirigeants accompagnés</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-heading font-semibold text-primary">98 %</p>
+                  <p className="text-sm text-gray-text mt-1">Taux de fidélisation annuel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section-padding section-ivory">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 reveal">
-            <div className="gold-line mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-primary mb-4">
-              Nos valeurs
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12 reveal">
+            <p className="text-[13px] tracking-widest uppercase text-gold mb-4">Ce qui nous guide</p>
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary">
+              Quatre engagements, pas de promesse creuse
             </h2>
-            <p className="text-gray-text max-w-2xl mx-auto text-lg">
-              Les piliers de notre engagement à vos côtés
-            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {values.map((v, i) => (
-              <div key={v.title} className={`reveal reveal-delay-${i + 1} bg-card border border-border/50 rounded-sm p-8 hover-lift`}>
-                <h3 className="font-heading text-xl font-semibold text-primary mb-3">{v.title}</h3>
-                <p className="text-gray-text leading-relaxed">{v.desc}</p>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 reveal">
+            {[
+              { title: "Indépendance", text: "Aucun lien capitalistique avec un groupe financier. Nous sélectionnons les meilleurs produits du marché, quel que soit l'émetteur." },
+              { title: "Transparence", text: "Notre mode de rémunération est communiqué en amont. Honoraires ou commissions, vous savez exactement comment nous sommes payés." },
+              { title: "Rigueur", text: "Chaque recommandation repose sur une analyse documentée. Nous rédigeons une lettre de mission et un rapport détaillé pour chaque client." },
+              { title: "Continuité", text: "Un interlocuteur dédié, un rendez-vous de suivi annuel, une veille réglementaire permanente. Notre accompagnement ne s'arrête pas à la souscription." },
+            ].map((v, i) => (
+              <div key={v.title} className={`reveal-delay-${i + 1} border-t border-border pt-6`}>
+                <h3 className="font-heading text-lg font-semibold text-primary mb-2">{v.title}</h3>
+                <p className="text-gray-text text-sm leading-relaxed">{v.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <ContentBlock
-        title="Notre approche"
-        text={[
-          "Nous ne proposons pas de solutions pré-formatées. Chaque recommandation est le fruit d'une analyse approfondie de votre situation personnelle, professionnelle et fiscale.",
-          "Notre rôle est celui d'un architecte patrimonial : nous concevons, structurons et pilotons votre stratégie dans le temps, en coordination avec vos autres conseils (notaire, avocat, expert-comptable).",
-        ]}
-        variant="ivory"
-        reversed
-      />
-
       <TrustBand />
-      <PageCTA />
+      <PageCTA
+        title="Rencontrons-nous"
+        subtitle="Un premier échange de 30 minutes pour parler de votre situation et voir comment nous pouvons vous aider."
+        secondaryText="En savoir plus sur notre méthode"
+        secondaryHref="/notre-methode"
+      />
       <Footer />
     </>
   );
