@@ -1,97 +1,54 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
-  const [form, setForm] = useState({ nom: "", email: "", telephone: "", message: "" });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
   return (
-    <section id="contact" className="section-padding section-navy">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16">
+    <section id="contact" className="section-padding bg-background texture-paper">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div className="reveal">
-            <div className="gold-line mb-6" />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold mb-6">
-              Parlons de votre projet
+            <p className="text-[13px] tracking-widest uppercase text-gold mb-4">Contact</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary leading-tight mb-6">
+              Un premier échange, sans engagement
             </h2>
-            <p className="text-primary-foreground/70 text-lg leading-relaxed mb-8">
-              Bénéficiez d'un premier échange de 30 minutes, sans engagement, pour faire le point sur votre situation patrimoniale et identifier vos priorités.
+            <p className="text-gray-text leading-relaxed mb-6">
+              Vous avez un projet, une question, ou simplement besoin d'un regard extérieur sur votre situation patrimoniale ? Nous vous proposons un premier rendez-vous de 30 minutes, gratuit, pour faire le point ensemble.
             </p>
-            <div className="space-y-4 text-primary-foreground/80">
-              <p>📍 12 Cours de l'Intendance, 33000 Bordeaux</p>
-              <p>📞 05 56 00 00 00</p>
-              <p>✉️ contact@patrimonia-conseil.fr</p>
-              <p className="text-sm text-primary-foreground/50 mt-6">
-                Du lundi au vendredi, 9h–18h<br />
-                Sur rendez-vous uniquement
+            <p className="text-gray-text leading-relaxed mb-8 text-sm">
+              Ce rendez-vous n'est pas un entretien commercial. C'est un échange entre vous et un conseiller expérimenté, pour clarifier vos priorités et voir si un accompagnement a du sens.
+            </p>
+            <div className="space-y-3 text-sm text-gray-text">
+              <p>12 Cours de l'Intendance, 33000 Bordeaux</p>
+              <p>05 56 00 00 00</p>
+              <p>contact@patrimonia-conseil.fr</p>
+              <p className="text-gray-text/60 pt-2 text-xs">
+                Du lundi au vendredi, 9h–18h — Sur rendez-vous
               </p>
             </div>
           </div>
           <div className="reveal reveal-delay-2">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="bg-navy-light/50 backdrop-blur-sm rounded-sm p-8 space-y-5 border border-primary-foreground/10"
-            >
-              <div>
-                <label htmlFor="nom" className="block text-sm font-medium text-primary-foreground/70 mb-1.5">Nom complet</label>
-                <input
-                  id="nom"
-                  name="nom"
-                  type="text"
-                  value={form.nom}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-navy-deep/50 border border-primary-foreground/15 rounded-sm text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-gold transition-colors"
-                  placeholder="Votre nom"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-primary-foreground/70 mb-1.5">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-navy-deep/50 border border-primary-foreground/15 rounded-sm text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-gold transition-colors"
-                  placeholder="votre@email.fr"
-                />
-              </div>
-              <div>
-                <label htmlFor="telephone" className="block text-sm font-medium text-primary-foreground/70 mb-1.5">Téléphone</label>
-                <input
-                  id="telephone"
-                  name="telephone"
-                  type="tel"
-                  value={form.telephone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-navy-deep/50 border border-primary-foreground/15 rounded-sm text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-gold transition-colors"
-                  placeholder="06 00 00 00 00"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-primary-foreground/70 mb-1.5">Votre projet</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-navy-deep/50 border border-primary-foreground/15 rounded-sm text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-gold transition-colors resize-none"
-                  placeholder="Décrivez brièvement votre situation ou votre projet..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full py-3.5 bg-gold text-navy-deep font-medium tracking-wide rounded-sm hover:bg-gold-light transition-colors duration-300"
+            <div className="space-y-4">
+              <Link
+                to="/contact"
+                className="block w-full py-4 px-6 bg-gold text-navy-deep text-center text-sm font-medium tracking-wide hover:bg-gold-light transition-colors duration-300"
               >
-                Demander un rendez-vous
-              </button>
-              <p className="text-xs text-primary-foreground/40 text-center">
-                Premier échange de 30 minutes — Sans engagement
-              </p>
-            </form>
+                Prendre rendez-vous
+              </Link>
+              <Link
+                to="/bilan-patrimonial-bordeaux"
+                className="block w-full py-4 px-6 border border-border text-primary text-center text-sm font-medium tracking-wide hover:border-gold/50 transition-colors duration-300"
+              >
+                Demander un bilan patrimonial
+              </Link>
+              <Link
+                to="/contact"
+                className="block w-full py-4 px-6 border border-border text-primary text-center text-sm font-medium tracking-wide hover:border-gold/50 transition-colors duration-300"
+              >
+                Être rappelé
+              </Link>
+            </div>
+            <p className="text-xs text-gray-text/50 mt-6 text-center">
+              Réponse sous 24 heures ouvrées
+            </p>
           </div>
         </div>
       </div>

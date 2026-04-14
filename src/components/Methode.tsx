@@ -1,67 +1,64 @@
+import { Link } from "react-router-dom";
+
 const steps = [
   {
     number: "01",
-    title: "Découverte",
-    description: "Un premier échange pour comprendre votre situation, vos objectifs et vos préoccupations patrimoniales.",
+    title: "Écoute",
+    description: "Un premier rendez-vous de 30 minutes pour comprendre votre situation, vos projets et vos préoccupations. Gratuit et sans engagement.",
   },
   {
     number: "02",
-    title: "Audit patrimonial",
-    description: "Analyse approfondie de votre patrimoine existant, de votre fiscalité et de vos flux financiers.",
+    title: "Audit",
+    description: "Analyse complète de votre patrimoine : actifs, passifs, fiscalité, prévoyance, régimes matrimoniaux. Nous regardons tout.",
   },
   {
     number: "03",
     title: "Stratégie",
-    description: "Élaboration de recommandations personnalisées et définition d'une feuille de route patrimoniale claire.",
+    description: "Rédaction d'une lettre de recommandations structurée, avec simulations chiffrées et scénarios comparés.",
   },
   {
     number: "04",
     title: "Mise en œuvre",
-    description: "Sélection et souscription des solutions retenues, avec un accompagnement à chaque étape.",
+    description: "Sélection des meilleurs contrats et supports du marché, ouverture des comptes, coordination avec vos autres conseils.",
   },
   {
     number: "05",
-    title: "Suivi durable",
-    description: "Rendez-vous annuels de suivi, ajustements stratégiques et veille réglementaire permanente.",
+    title: "Suivi",
+    description: "Un rendez-vous annuel de bilan, des alertes en cas de changement législatif, un interlocuteur disponible toute l'année.",
   },
 ];
 
 export default function Methode() {
   return (
     <section id="methode" className="section-padding section-navy">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 reveal">
-          <div className="gold-line mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold mb-4">
-            Notre méthode
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-14 reveal">
+          <p className="text-[13px] tracking-widest uppercase text-gold/80 mb-4">Méthode</p>
+          <h2 className="text-3xl md:text-4xl font-heading font-semibold mb-4">
+            Comment nous travaillons
           </h2>
-          <p className="text-primary-foreground/70 max-w-2xl mx-auto text-lg">
-            Un accompagnement structuré, pensé pour durer
+          <p className="text-primary-foreground/60 max-w-xl">
+            Pas de formule standard, mais un processus clair, reproductible, qui respecte votre temps et vos priorités.
           </p>
         </div>
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gold/30 -translate-x-1/2" />
-          <div className="space-y-12 lg:space-y-0">
-            {steps.map((step, i) => (
-              <div
-                key={step.number}
-                className={`reveal reveal-delay-${i + 1} lg:flex items-center gap-12 ${
-                  i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } ${i > 0 ? "lg:mt-12" : ""}`}
-              >
-                <div className={`lg:w-5/12 ${i % 2 === 0 ? "lg:text-right" : "lg:text-left"}`}>
-                  <span className="text-gold font-heading text-4xl font-bold opacity-60">{step.number}</span>
-                  <h3 className="font-heading text-2xl font-semibold mt-2 mb-3">{step.title}</h3>
-                  <p className="text-primary-foreground/70 leading-relaxed">{step.description}</p>
-                </div>
-                <div className="hidden lg:flex w-2/12 justify-center relative">
-                  <div className="w-4 h-4 rounded-full bg-gold border-4 border-navy z-10" />
-                </div>
-                <div className="lg:w-5/12" />
+        <div className="space-y-0">
+          {steps.map((step, i) => (
+            <div
+              key={step.number}
+              className={`reveal reveal-delay-${Math.min(i + 1, 5)} flex gap-8 py-8 ${i < steps.length - 1 ? "border-b border-primary-foreground/8" : ""}`}
+            >
+              <span className="text-gold/40 font-heading text-3xl font-semibold flex-shrink-0 w-12">{step.number}</span>
+              <div>
+                <h3 className="font-heading text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-primary-foreground/60 leading-relaxed text-sm">{step.description}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 reveal">
+          <Link to="/notre-methode" className="text-sm font-medium text-gold border-b border-gold/30 hover:border-gold transition-colors pb-0.5">
+            Découvrir notre méthode en détail →
+          </Link>
         </div>
       </div>
     </section>
