@@ -13,7 +13,7 @@ export default function CabinetPage() {
       <Header />
       <PageHero
         title="Le Cabinet"
-        subtitle="Patrimonia Conseil est un cabinet indépendant de conseil en gestion de patrimoine, installé à Bordeaux. Nous intervenons auprès de particuliers, de familles et de dirigeants d'entreprise."
+        subtitle="KANTI est un cabinet indépendant de conseil en gestion de patrimoine, installé à Bordeaux. Nous intervenons auprès de particuliers, de familles et de dirigeants d'entreprise."
         breadcrumb="Le Cabinet"
       />
 
@@ -26,7 +26,7 @@ export default function CabinetPage() {
                 Un cabinet fondé sur une conviction simple : votre conseil doit travailler pour vous, pas pour une banque
               </h2>
               <p className="text-gray-text leading-relaxed mb-4">
-                Patrimonia Conseil est né d'un constat partagé par ses trois associés, tous issus de la banque privée : les intérêts du client et ceux de l'établissement ne sont pas toujours alignés. Nous avons fait le choix de l'indépendance totale pour lever cette ambiguïté.
+                KANTI est né d'un constat partagé par ses trois associés, tous issus de la banque privée : les intérêts du client et ceux de l'établissement ne sont pas toujours alignés. Nous avons fait le choix de l'indépendance totale pour lever cette ambiguïté.
               </p>
               <p className="text-gray-text leading-relaxed mb-4">
                 Depuis plus de quinze ans, nous accompagnons nos clients dans la durée. Pas de produit maison, pas de quota commercial, pas de pression de réseau. Chaque recommandation est le fruit d'une analyse objective de votre situation, en architecture ouverte.
