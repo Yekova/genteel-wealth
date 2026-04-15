@@ -4,9 +4,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden">
-      {/* Background */}
+      {/* Background with parallax */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-navy-deep/70" />
@@ -17,7 +17,7 @@ export default function Hero() {
             className="text-[13px] tracking-widest uppercase text-gold/80 mb-6 opacity-0"
             style={{ animation: "fade-in 0.8s ease-out 0.3s forwards" }}
           >
-            Cabinet indépendant — Bordeaux
+            KANTI — Cabinet indépendant — Bordeaux
           </p>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-primary-foreground leading-[1.15] mb-8 opacity-0"
@@ -38,13 +38,13 @@ export default function Hero() {
           >
             <Link
               to="/bilan-patrimonial-bordeaux"
-              className="px-7 py-3 bg-gold text-navy-deep text-sm font-medium tracking-wide hover:bg-gold-light transition-colors duration-300"
+              className="px-7 py-3 bg-gold text-navy-deep text-sm font-medium tracking-wide hover:bg-gold-light transition-all duration-300 btn-hover"
             >
               Demander un bilan patrimonial
             </Link>
             <Link
               to="/contact"
-              className="px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors duration-300"
+              className="px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-all duration-300 btn-hover"
             >
               Prendre rendez-vous
             </Link>
