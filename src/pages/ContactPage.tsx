@@ -173,7 +173,7 @@ export default function ContactPage() {
               <div className="space-y-2 text-sm text-primary-foreground/70">
                 <p>12 Cours de l'Intendance, 33000 Bordeaux</p>
                 <p>05 56 00 00 00</p>
-                <p>contact@patrimonia-conseil.fr</p>
+                <p>contact@kanti.fr</p>
                 <p className="text-primary-foreground/40 pt-2 text-xs">Lundi – Vendredi, 9h–18h — Sur rendez-vous</p>
               </div>
             </div>

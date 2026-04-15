@@ -46,8 +46,8 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="font-heading text-2xl font-semibold tracking-wider text-primary-foreground">
-          PATRIMONIA
+        <Link to="/" className="font-heading text-2xl font-semibold tracking-[0.15em] text-primary-foreground hover:text-gold transition-colors duration-300">
+          KANTI
         </Link>
 
         {/* Desktop nav */}
@@ -60,7 +60,7 @@ export default function Header() {
                 onMouseEnter={() => setDropdownOpen(true)}
                 onMouseLeave={() => setDropdownOpen(false)}
               >
-                <button className="text-[13px] font-medium tracking-wide text-primary-foreground/75 hover:text-primary-foreground transition-colors duration-300 flex items-center gap-1">
+                <button className="text-[13px] font-medium tracking-wide text-primary-foreground/75 hover:text-primary-foreground transition-colors duration-300 flex items-center gap-1 link-underline">
                   {link.label}
                   <svg className={`w-3 h-3 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -88,7 +88,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-[13px] font-medium tracking-wide text-primary-foreground/75 hover:text-primary-foreground transition-colors duration-300"
+                className="text-[13px] font-medium tracking-wide text-primary-foreground/75 hover:text-primary-foreground transition-colors duration-300 link-underline"
               >
                 {link.label}
               </Link>
@@ -96,7 +96,7 @@ export default function Header() {
           )}
           <Link
             to="/contact"
-            className="ml-3 px-5 py-2 text-[13px] font-medium tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy-deep transition-all duration-300"
+            className="ml-3 px-5 py-2 text-[13px] font-medium tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy-deep transition-all duration-300 btn-hover"
           >
             Prendre rendez-vous
           </Link>
