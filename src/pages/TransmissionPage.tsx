@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
+import TransmissionSimulator from "@/components/simulators/TransmissionSimulator";
 
 export default function TransmissionPage() {
   useScrollReveal();
@@ -47,6 +48,27 @@ export default function TransmissionPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Simulator */}
+      <section className="section-padding section-ivory">
+        <div className="max-w-4xl mx-auto">
+          <div className="reveal">
+            <div className="gold-line mb-4" />
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">
+              Estimez vos droits de succession
+            </h2>
+            <p className="text-muted-foreground text-sm mb-8 max-w-xl">
+              Indiquez votre patrimoine total et le nombre d'enfants pour comparer les droits de succession avec et sans stratégie d'optimisation.
+            </p>
+          </div>
+          <div className="reveal reveal-delay-1 bg-card border border-border p-6 md:p-8">
+            <TransmissionSimulator />
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-4 text-center reveal reveal-delay-2">
+            Estimation indicative. Les droits réels dépendent de la composition du patrimoine et des dispositions déjà en place.
+          </p>
         </div>
       </section>
 

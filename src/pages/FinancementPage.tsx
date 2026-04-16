@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
+import CreditSimulator from "@/components/simulators/CreditSimulator";
 
 export default function FinancementPage() {
   useScrollReveal();
@@ -46,6 +47,27 @@ export default function FinancementPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Simulator */}
+      <section className="section-padding section-ivory">
+        <div className="max-w-4xl mx-auto">
+          <div className="reveal">
+            <div className="gold-line mb-4" />
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">
+              Calculez vos mensualités de crédit
+            </h2>
+            <p className="text-muted-foreground text-sm mb-8 max-w-xl">
+              Ajustez le montant, le taux et la durée pour visualiser le capital restant dû, la mensualité et le coût total du financement.
+            </p>
+          </div>
+          <div className="reveal reveal-delay-1 bg-card border border-border p-6 md:p-8">
+            <CreditSimulator />
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-4 text-center reveal reveal-delay-2">
+            Simulation indicative hors assurance et frais de dossier. Les conditions réelles dépendent de votre profil emprunteur.
+          </p>
         </div>
       </section>
 

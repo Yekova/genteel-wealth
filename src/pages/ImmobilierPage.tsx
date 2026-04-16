@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
+import ImmobilierSimulator from "@/components/simulators/ImmobilierSimulator";
 
 export default function ImmobilierPage() {
   useScrollReveal();
@@ -47,6 +48,27 @@ export default function ImmobilierPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Simulator */}
+      <section className="section-padding section-ivory">
+        <div className="max-w-4xl mx-auto">
+          <div className="reveal">
+            <div className="gold-line mb-4" />
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">
+              Analysez votre rendement locatif
+            </h2>
+            <p className="text-muted-foreground text-sm mb-8 max-w-xl">
+              Renseignez le prix du bien, le loyer mensuel et l'apport pour visualiser le rendement et l'évolution de votre patrimoine immobilier sur 20 ans.
+            </p>
+          </div>
+          <div className="reveal reveal-delay-1 bg-card border border-border p-6 md:p-8">
+            <ImmobilierSimulator />
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-4 text-center reveal reveal-delay-2">
+            Simulation indicative avec revalorisation de 2 % / an et 25 % de charges. Ne constitue pas un conseil en investissement.
+          </p>
         </div>
       </section>
 

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
+import EpargneSimulator from "@/components/simulators/EpargneSimulator";
 
 export default function GestionPatrimonialePage() {
   useScrollReveal();
@@ -60,6 +61,27 @@ export default function GestionPatrimonialePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Simulator section */}
+      <section className="section-padding section-ivory">
+        <div className="max-w-4xl mx-auto">
+          <div className="reveal">
+            <div className="gold-line mb-4" />
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">
+              Simulez la croissance de votre épargne
+            </h2>
+            <p className="text-muted-foreground text-sm mb-8 max-w-xl">
+              Ajustez le capital initial, l'épargne mensuelle et l'horizon de placement pour visualiser l'évolution de votre patrimoine financier.
+            </p>
+          </div>
+          <div className="reveal reveal-delay-1 bg-card border border-border p-6 md:p-8">
+            <EpargneSimulator />
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-4 text-center reveal reveal-delay-2">
+            Simulation indicative à 4 % annuels, hors fiscalité et frais. Elle ne constitue pas un conseil en investissement.
+          </p>
         </div>
       </section>
 
