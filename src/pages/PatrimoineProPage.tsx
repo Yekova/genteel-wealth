@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import PageCTA from "@/components/PageCTA";
 import TrustBand from "@/components/TrustBand";
+import PatrimoineProSimulator from "@/components/simulators/PatrimoineProSimulator";
 
 export default function PatrimoineProPage() {
   useScrollReveal();
@@ -45,6 +46,24 @@ export default function PatrimoineProPage() {
                 <p className="text-gray-text text-sm leading-relaxed">{e.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Simulator */}
+      <section className="section-padding section-ivory">
+        <div className="max-w-4xl mx-auto">
+          <div className="reveal">
+            <div className="gold-line mb-4" />
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">
+              Comparez les scénarios de rémunération
+            </h2>
+            <p className="text-muted-foreground text-sm mb-8 max-w-xl">
+              Ajustez votre chiffre d'affaires et la rémunération visée pour comparer l'impact fiscal entre salaire seul, rémunération mixte et holding.
+            </p>
+          </div>
+          <div className="reveal reveal-delay-1 bg-card border border-border p-6 md:p-8">
+            <PatrimoineProSimulator />
           </div>
         </div>
       </section>
