@@ -20,29 +20,47 @@ const cas = [
 
 export default function HomeCasClients() {
   return (
-    <section className="section-padding section-ivory">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-14 reveal">
-          <p className="text-[13px] tracking-widest uppercase text-gold mb-4">Situations concrètes</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-4">
-            Des cas proches du vôtre
+    <section className="section-padding section-glass relative">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="mb-16 reveal max-w-2xl">
+          <div className="electric-line mb-5" />
+          <p className="text-[11px] tracking-[0.3em] uppercase text-foreground/50 mb-5 font-medium">
+            Situations concrètes
+          </p>
+          <h2 className="text-4xl md:text-5xl font-heading font-light text-foreground mb-6 tracking-tight leading-[1.1]">
+            Des cas<br />
+            <span className="italic text-foreground/70">proches du vôtre</span>
           </h2>
-          <p className="text-gray-text max-w-xl">
+          <p className="text-foreground/60 text-lg font-light">
             Chaque situation est différente. Voici comment nous avons accompagné des profils similaires — de façon anonymisée.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5">
           {cas.map((c, i) => (
-            <div key={c.profil} className={`reveal reveal-delay-${i + 1} border-t border-border pt-6`}>
-              <p className="text-xs tracking-widest uppercase text-gold mb-3">{c.profil}</p>
-              <p className="text-gray-text text-sm leading-relaxed mb-3">{c.situation}</p>
-              <p className="text-primary text-sm font-medium leading-relaxed">{c.axes}</p>
+            <div
+              key={c.profil}
+              className={`reveal reveal-delay-${i + 1} glass-card p-7`}
+            >
+              <p className="text-[10px] tracking-[0.25em] uppercase text-[hsl(var(--electric))] mb-4 font-medium">
+                {c.profil}
+              </p>
+              <p className="text-foreground/65 text-sm leading-relaxed mb-4 font-light">
+                {c.situation}
+              </p>
+              <div className="separator-fine my-4" />
+              <p className="text-foreground/85 text-sm leading-relaxed">{c.axes}</p>
             </div>
           ))}
         </div>
-        <div className="mt-10 reveal">
-          <Link to="/cas-clients" className="text-sm font-medium text-primary border-b border-primary/30 hover:border-primary transition-colors pb-0.5">
-            Voir tous les cas clients →
+        <div className="mt-12 reveal">
+          <Link
+            to="/cas-clients"
+            className="inline-flex items-center gap-2 px-6 py-3 btn-primary-glass text-sm tracking-wide reflection-sweep"
+          >
+            Voir tous les cas clients
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
           </Link>
         </div>
       </div>
