@@ -452,6 +452,114 @@
   .float-slow {
     animation: float-soft 9s ease-in-out infinite;
   }
+
+  /* ───── SECTION FADES / GLASS MORPHING ───── */
+  /* Soft vertical fade between sections — top edge */
+  .fade-edge-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(180deg, hsl(220 30% 97%) 0%, hsl(220 30% 97% / 0.6) 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .fade-edge-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(0deg, hsl(220 30% 97%) 0%, hsl(220 30% 97% / 0.6) 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Dark variants — for sections sitting next to .section-dark */
+  .fade-edge-top-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(180deg, hsl(224 60% 7%) 0%, hsl(224 60% 7% / 0.5) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .fade-edge-bottom-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(0deg, hsl(224 60% 7%) 0%, hsl(224 60% 7% / 0.5) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Standalone fade divider — to drop between two sections */
+  .section-fade {
+    position: relative;
+    height: 120px;
+    margin-top: -60px;
+    margin-bottom: -60px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .section-fade-light {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(220 30% 97% / 0.4) 30%,
+      hsl(220 30% 97% / 0.8) 50%,
+      hsl(220 30% 97% / 0.4) 70%,
+      transparent 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .section-fade-dark {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(224 60% 7% / 0.4) 30%,
+      hsl(224 60% 7% / 0.85) 50%,
+      hsl(224 60% 7% / 0.4) 70%,
+      transparent 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  /* Light → Dark transition (and vice versa) */
+  .section-fade-to-dark {
+    background: linear-gradient(180deg, hsl(220 30% 97%) 0%, hsl(222 45% 30% / 0.6) 50%, hsl(224 60% 7%) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .section-fade-to-light {
+    background: linear-gradient(180deg, hsl(224 60% 7%) 0%, hsl(222 45% 30% / 0.6) 50%, hsl(220 30% 97%) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* Soft mask fade — uses CSS mask for ultra-clean edge blending */
+  .mask-fade-y {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+  .mask-fade-bottom {
+    -webkit-mask-image: linear-gradient(180deg, black 0%, black 80%, transparent 100%);
+            mask-image: linear-gradient(180deg, black 0%, black 80%, transparent 100%);
+  }
+  .mask-fade-top {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 20%, black 100%);
+            mask-image: linear-gradient(180deg, transparent 0%, black 20%, black 100%);
+  }
 }
 
 /* ───── KEYFRAMES ───── */
