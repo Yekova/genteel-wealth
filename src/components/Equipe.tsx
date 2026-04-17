@@ -18,28 +18,54 @@ const team = [
 
 export default function Equipe() {
   return (
-    <section id="equipe" className="section-padding bg-background texture-paper">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-14 reveal">
-          <p className="text-[13px] tracking-widest uppercase text-gold mb-4">L'équipe</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-4">
-            Trois associés, une même exigence
+    <section id="equipe" className="section-padding texture-paper relative">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="mb-16 reveal max-w-2xl">
+          <div className="electric-line mb-5" />
+          <p className="text-[11px] tracking-[0.3em] uppercase text-foreground/50 mb-5 font-medium">
+            L'équipe
+          </p>
+          <h2 className="text-4xl md:text-5xl font-heading font-light text-foreground mb-6 tracking-tight leading-[1.1]">
+            Trois associés,<br />
+            <span className="italic text-foreground/70">une même exigence</span>
           </h2>
-          <p className="text-gray-text max-w-xl">
+          <p className="text-foreground/60 text-lg font-light">
             Chaque client a un interlocuteur dédié. L'ensemble de l'équipe collabore sur les dossiers qui l'exigent.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-6">
           {team.map((member, i) => (
-            <div key={member.name} className={`reveal reveal-delay-${i + 1}`}>
-              <div className="w-full aspect-[3/4] bg-navy/6 mb-5 flex items-end justify-center overflow-hidden">
-                <span className="font-heading text-6xl text-navy/15 pb-4">
+            <div
+              key={member.name}
+              className={`reveal reveal-delay-${i + 1} glass-card p-6 group`}
+            >
+              <div
+                className="w-full aspect-[4/5] mb-6 flex items-end justify-center overflow-hidden rounded-xl relative"
+                style={{
+                  background:
+                    "linear-gradient(135deg, hsl(220 30% 92%) 0%, hsl(210 25% 85%) 100%)",
+                }}
+              >
+                <div
+                  className="absolute inset-0 opacity-60"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 30% 20%, hsl(210 100% 70% / 0.3) 0%, transparent 60%)",
+                  }}
+                />
+                <span className="relative font-heading text-7xl text-foreground/15 pb-6 group-hover:text-foreground/25 transition-colors duration-500">
                   {member.name.split(" ").map((n) => n[0]).join("")}
                 </span>
               </div>
-              <h3 className="font-heading text-xl font-semibold text-primary mb-1">{member.name}</h3>
-              <p className="text-gold text-[13px] font-medium mb-3">{member.role}</p>
-              <p className="text-gray-text text-sm leading-relaxed">{member.bio}</p>
+              <h3 className="font-heading text-xl font-normal text-foreground mb-1 tracking-tight">
+                {member.name}
+              </h3>
+              <p className="text-[hsl(var(--electric))] text-[12px] font-medium mb-3 tracking-wide">
+                {member.role}
+              </p>
+              <p className="text-foreground/60 text-sm leading-relaxed font-light">
+                {member.bio}
+              </p>
             </div>
           ))}
         </div>
