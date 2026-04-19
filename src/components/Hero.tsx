@@ -18,7 +18,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg"
@@ -89,6 +89,7 @@ export default function Hero() {
           >
             <Link
               to="/bilan-patrimonial-bordeaux"
+              data-magnetic
               className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-navy-deep text-sm font-medium tracking-wide rounded-full reflection-sweep hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5"
             >
               Demander un bilan patrimonial
@@ -98,6 +99,7 @@ export default function Hero() {
             </Link>
             <Link
               to="/contact"
+              data-magnetic
               className="inline-flex items-center justify-center px-7 py-3.5 btn-glass text-white text-sm font-medium tracking-wide"
             >
               Prendre rendez-vous

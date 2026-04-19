@@ -95,6 +95,33 @@
     scroll-behavior: smooth;
   }
 
+  /* Premium cursor — hide native on fine pointer + hover devices */
+  @media (hover: hover) and (pointer: fine) {
+    html.cursor-premium-on,
+    html.cursor-premium-on body,
+    html.cursor-premium-on a,
+    html.cursor-premium-on button,
+    html.cursor-premium-on [role="button"],
+    html.cursor-premium-on input,
+    html.cursor-premium-on textarea,
+    html.cursor-premium-on select,
+    html.cursor-premium-on label {
+      cursor: none;
+    }
+  }
+
+  /* Respect reduced-motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   body {
     @apply text-foreground font-body antialiased;
     background: var(--gradient-page);
