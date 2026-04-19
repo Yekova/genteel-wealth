@@ -51,20 +51,9 @@ export default function PatrimoineProPage() {
       </section>
 
       {/* Simulator */}
-      <section className="section-padding section-ivory">
-        <div className="max-w-4xl mx-auto">
-          <div className="reveal">
-            <div className="gold-line mb-4" />
-            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-primary mb-3">
-              Comparez les scénarios de rémunération
-            </h2>
-            <p className="text-muted-foreground text-sm mb-8 max-w-xl">
-              Ajustez votre chiffre d'affaires et la rémunération visée pour comparer l'impact fiscal entre salaire seul, rémunération mixte et holding.
-            </p>
-          </div>
-          <div className="reveal reveal-delay-1 bg-card border border-border p-6 md:p-8">
-            <PatrimoineProSimulator />
-          </div>
+      <section className="section-padding">
+        <div className="max-w-6xl mx-auto reveal">
+          <PatrimoineProSimulator />
         </div>
       </section>
 
