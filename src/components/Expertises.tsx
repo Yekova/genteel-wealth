@@ -7,7 +7,6 @@ const expertises = [
     description: "Allocation d'actifs, assurance-vie, PER, compte-titres, SCPI — une stratégie d'épargne construite pour durer.",
     benefit: "Faire travailler votre capital en cohérence avec vos projets de vie.",
     href: "/gestion-patrimoniale",
-    stat: { value: "4,2 %", label: "rendement moyen annualisé" },
     featured: true,
   },
   {
@@ -16,7 +15,6 @@ const expertises = [
     description: "Audit fiscal, IFI, revenus fonciers, structuration — réduire votre pression fiscale sans prendre de risques inutiles.",
     benefit: "Identifier vos marges de manœuvre fiscales réelles.",
     href: "/fiscalite",
-    stat: { value: "28 %", label: "d'économie moyenne constatée" },
     featured: true,
   },
   {
@@ -25,7 +23,6 @@ const expertises = [
     description: "Rémunération du dirigeant, trésorerie d'entreprise, holding, prévoyance, cession et transmission d'activité.",
     benefit: "Articuler patrimoine privé et professionnel avec méthode.",
     href: "/patrimoine-professionnel",
-    stat: { value: "65 %", label: "de nos clients sont dirigeants" },
   },
   {
     tag: "Financement",
@@ -33,7 +30,6 @@ const expertises = [
     description: "Courtage indépendant, négociation des meilleures conditions, montages patrimoniaux adaptés à chaque projet.",
     benefit: "Obtenir les conditions de crédit les plus compétitives.",
     href: "/financement",
-    stat: { value: "0,3 pt", label: "d'écart moyen négocié" },
   },
   {
     tag: "Succession",
@@ -41,7 +37,6 @@ const expertises = [
     description: "Donation, démembrement, assurance-vie, pacte Dutreil — anticiper pour protéger ceux qui comptent.",
     benefit: "Préparer la transmission en maîtrisant la fiscalité.",
     href: "/transmission-patrimoine-famille",
-    stat: { value: "100k €", label: "abattement par enfant" },
   },
   {
     tag: "Immobilier",
@@ -49,7 +44,6 @@ const expertises = [
     description: "Résidence principale, locatif, SCI, nue-propriété — chaque investissement pensé dans une logique globale.",
     benefit: "Structurer vos actifs immobiliers intelligemment.",
     href: "/patrimoine-immobilier-strategie",
-    stat: { value: "5,2 %", label: "rendement net moyen visé" },
   },
 ];
 
@@ -80,18 +74,10 @@ export default function Expertises() {
               className={`reveal reveal-delay-${i + 1} group glass-card block p-8 md:p-10 reflection-sweep`}
             >
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-6">
+                <div className="mb-6">
                   <span className="text-[10px] tracking-[0.25em] uppercase text-foreground/50 font-medium">
                     {item.tag}
                   </span>
-                  <div className="text-right">
-                    <span className="block text-2xl font-heading font-light text-foreground">
-                      {item.stat.value}
-                    </span>
-                    <span className="text-[10px] text-foreground/45 tracking-wide">
-                      {item.stat.label}
-                    </span>
-                  </div>
                 </div>
                 <h3 className="font-heading text-2xl md:text-3xl font-light text-foreground mb-4 tracking-tight transition-colors duration-300 group-hover:text-[hsl(var(--electric))]">
                   {item.title}
@@ -122,12 +108,9 @@ export default function Expertises() {
               className={`reveal reveal-delay-${i + 1} group glass-card block p-6 reflection-sweep`}
             >
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
+                <div className="mb-4">
                   <span className="text-[10px] tracking-[0.2em] uppercase text-foreground/50 font-medium">
                     {item.tag}
-                  </span>
-                  <span className="text-lg font-heading font-light text-foreground leading-none">
-                    {item.stat.value}
                   </span>
                 </div>
                 <h3 className="font-heading text-xl font-light text-foreground mb-3 tracking-tight transition-colors duration-300 group-hover:text-[hsl(var(--electric))]">
