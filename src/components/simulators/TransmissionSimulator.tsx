@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import SimulatorShell from "./SimulatorShell";
+import GlassSlider from "./GlassSlider";
 
 export default function TransmissionSimulator() {
   const [patrimoine, setPatrimoine] = useState(800000);
@@ -19,57 +21,59 @@ export default function TransmissionSimulator() {
       droitsSans,
       droitsAvec,
       data: [
-        { name: "Transmis net", value: patrimoine - droitsAvec, color: "hsl(32,30%,55%)" },
-        { name: "Droits optimisés", value: droitsAvec, color: "hsl(210,25%,18%)" },
-        { name: "Économie", value: economie, color: "hsl(160,12%,42%)" },
+        { name: "Transmis net", value: patrimoine - droitsAvec, color: "hsl(var(--accent))" },
+        { name: "Droits optimisés", value: droitsAvec, color: "hsl(var(--primary))" },
+        { name: "Économie réalisée", value: economie, color: "hsl(160 30% 45%)" },
       ],
     };
   }, [patrimoine, enfants]);
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="text-[10px] uppercase tracking-wider text-muted-foreground block mb-1">Patrimoine total</label>
-          <input type="range" min={200000} max={5000000} step={50000} value={patrimoine} onChange={(e) => setPatrimoine(+e.target.value)} className="w-full accent-gold h-1" />
-          <span className="text-xs font-medium text-primary">{(patrimoine / 1000000).toFixed(1)}M €</span>
-        </div>
-        <div>
-          <label className="text-[10px] uppercase tracking-wider text-muted-foreground block mb-1">Nombre d'enfants</label>
-          <input type="range" min={1} max={5} step={1} value={enfants} onChange={(e) => setEnfants(+e.target.value)} className="w-full accent-gold h-1" />
-          <span className="text-xs font-medium text-primary">{enfants}</span>
-        </div>
-      </div>
+    <SimulatorShell
+      eyebrow="Simulateur · Transmission"
+      title="Préservez ce qui compte vraiment"
+      subtitle="Mesurez l'impact d'une stratégie de transmission optimisée sur les droits dus."
+    >
+      <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        <div className="lg:col-span-2 space-y-6">
+          <GlassSlider label="Patrimoine total" value={`${(patrimoine / 1000000).toFixed(2)}M €`} min={200000} max={5000000} step={50000} current={patrimoine} onChange={setPatrimoine} />
+          <GlassSlider label="Nombre d'enfants" value={`${enfants}`} min={1} max={5} step={1} current={enfants} onChange={setEnfants} />
 
-      <div className="h-[140px] flex items-center">
-        <ResponsiveContainer width="50%" height="100%">
-          <PieChart>
-            <Pie data={data} cx="50%" cy="50%" innerRadius={30} outerRadius={55} dataKey="value" stroke="none">
-              {data.map((entry, i) => (
-                <Cell key={i} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip
-              contentStyle={{ background: "hsl(40,15%,99%)", border: "1px solid hsl(40,10%,88%)", borderRadius: 4, fontSize: 11 }}
-              formatter={(v: number) => [`${(v / 1000).toFixed(0)}k €`]}
-            />
-          </PieChart>
-        </ResponsiveContainer>
-        <div className="flex-1 space-y-1.5 text-[11px]">
-          {data.map((d) => (
-            <div key={d.name} className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full shrink-0" style={{ background: d.color }} />
-              <span className="text-muted-foreground">{d.name}</span>
-              <span className="ml-auto font-medium text-primary">{(d.value / 1000).toFixed(0)}k €</span>
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-foreground/10">
+            <div>
+              <div className="text-[9px] uppercase tracking-[0.2em] text-foreground/45 mb-1">Sans optimisation</div>
+              <div className="font-heading font-light text-lg md:text-xl tracking-tight text-foreground">{(droitsSans / 1000).toFixed(0)}k €</div>
             </div>
-          ))}
+            <div>
+              <div className="text-[9px] uppercase tracking-[0.2em] text-foreground/45 mb-1">Avec stratégie</div>
+              <div className="font-heading font-light text-lg md:text-xl tracking-tight text-[hsl(var(--accent))]">{(droitsAvec / 1000).toFixed(0)}k €</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-3 h-[280px] md:h-[340px] flex items-center gap-6">
+          <ResponsiveContainer width="55%" height="100%">
+            <PieChart>
+              <Pie data={data} cx="50%" cy="50%" innerRadius={70} outerRadius={120} dataKey="value" stroke="none" paddingAngle={2}>
+                {data.map((entry, i) => <Cell key={i} fill={entry.color} />)}
+              </Pie>
+              <Tooltip
+                contentStyle={{ background: "hsl(0 0% 100% / 0.92)", backdropFilter: "blur(12px)", border: "1px solid hsl(var(--foreground) / 0.1)", borderRadius: 12, fontSize: 12, boxShadow: "0 10px 40px hsl(var(--primary) / 0.15)" }}
+                formatter={(v: number) => [`${(v / 1000).toFixed(0)}k €`]}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+          <div className="flex-1 space-y-3 text-[12px]">
+            {data.map((d) => (
+              <div key={d.name} className="flex items-center gap-3">
+                <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: d.color }} />
+                <span className="text-foreground/60 flex-1">{d.name}</span>
+                <span className="font-heading font-light text-base tracking-tight text-foreground">{(d.value / 1000).toFixed(0)}k €</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      <div className="flex justify-between text-[11px] border-t border-border pt-2">
-        <span className="text-muted-foreground">Sans optimisation : <strong className="text-primary">{(droitsSans / 1000).toFixed(0)}k €</strong></span>
-        <span className="text-muted-foreground">Avec stratégie : <strong className="text-gold">{(droitsAvec / 1000).toFixed(0)}k €</strong></span>
-      </div>
-    </div>
+    </SimulatorShell>
   );
 }

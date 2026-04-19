@@ -11,7 +11,6 @@ import Actualites from "@/components/Actualites";
 import Contact from "@/components/Contact";
 import TrustBand from "@/components/TrustBand";
 import Footer from "@/components/Footer";
-import SectionFade from "@/components/SectionFade";
 
 const Index = () => {
   useScrollReveal();
@@ -20,19 +19,13 @@ const Index = () => {
     <>
       <Header />
       <Hero />
-      {/* Hero (dark) → About (light) */}
-      <SectionFade variant="to-light" height={180} />
       <About />
       <Expertises />
       <Methode />
-      {/* Méthode (dark) → Cas clients (light) */}
-      <SectionFade variant="to-light" height={180} />
       <HomeCasClients />
       <Equipe />
       <Confiance />
       <Actualites />
-      {/* Actualités (light) → Contact (dark) */}
-      <SectionFade variant="to-dark" height={180} />
       <Contact />
       <TrustBand />
       <Footer />
