@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
+import SimulatorShell from "./SimulatorShell";
+import GlassSlider from "./GlassSlider";
 
 export default function PatrimoineProSimulator() {
   const [ca, setCa] = useState(250000);
@@ -11,47 +13,54 @@ export default function PatrimoineProSimulator() {
     const irSalaire = remuneration * 0.30;
     const irDividendes = dividendes * 0.30;
     const chargesSociales = remuneration * 0.45;
-    
+
     return [
-      { scenario: "Salaire seul", salaire: Math.round(remuneration - irSalaire - chargesSociales), fiscalite: Math.round(irSalaire + chargesSociales) },
-      { scenario: "Mixte optimal", salaire: Math.round(remuneration * 0.65 * 0.55), fiscalite: Math.round(remuneration * 0.65 * 0.45 + dividendes * 0.30) },
-      { scenario: "Holding", salaire: Math.round(remuneration * 0.6 * 0.58), fiscalite: Math.round(remuneration * 0.6 * 0.42 + is * 0.3) },
+      { scenario: "Salaire seul", net: Math.round(remuneration - irSalaire - chargesSociales), fiscalite: Math.round(irSalaire + chargesSociales) },
+      { scenario: "Mixte optimal", net: Math.round(remuneration * 0.65 * 0.55 + dividendes * 0.7), fiscalite: Math.round(remuneration * 0.65 * 0.45 + dividendes * 0.30) },
+      { scenario: "Holding", net: Math.round(remuneration * 0.6 * 0.58 + is * 0.7), fiscalite: Math.round(remuneration * 0.6 * 0.42 + is * 0.3) },
     ];
   }, [ca, remuneration]);
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="text-[10px] uppercase tracking-wider text-muted-foreground block mb-1">CA annuel</label>
-          <input type="range" min={80000} max={2000000} step={10000} value={ca} onChange={(e) => setCa(+e.target.value)} className="w-full accent-gold h-1" />
-          <span className="text-xs font-medium text-primary">{(ca / 1000).toFixed(0)}k €</span>
+    <SimulatorShell
+      eyebrow="Simulateur · Dirigeants"
+      title="Comparez vos stratégies de rémunération"
+      subtitle="Salaire, dividendes, holding : visualisez l'impact fiscal de chaque arbitrage."
+    >
+      <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+        <div className="lg:col-span-2 space-y-6">
+          <GlassSlider label="CA annuel" value={`${(ca / 1000).toFixed(0)}k €`} min={80000} max={2000000} step={10000} current={ca} onChange={setCa} />
+          <GlassSlider label="Rémunération visée" value={`${(remuneration / 1000).toFixed(0)}k €`} min={30000} max={500000} step={5000} current={remuneration} onChange={setRemuneration} />
+
+          <div className="pt-4 border-t border-foreground/10 space-y-2 text-[12px]">
+            {data.map((d) => (
+              <div key={d.scenario} className="flex justify-between items-baseline">
+                <span className="text-foreground/60">{d.scenario}</span>
+                <span className="font-heading font-light text-base tracking-tight text-[hsl(var(--accent))]">
+                  {(d.net / 1000).toFixed(0)}k € net
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div>
-          <label className="text-[10px] uppercase tracking-wider text-muted-foreground block mb-1">Rémunération visée</label>
-          <input type="range" min={30000} max={500000} step={5000} value={remuneration} onChange={(e) => setRemuneration(+e.target.value)} className="w-full accent-gold h-1" />
-          <span className="text-xs font-medium text-primary">{(remuneration / 1000).toFixed(0)}k €</span>
+
+        <div className="lg:col-span-3 h-[280px] md:h-[340px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data} barSize={48} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke="hsl(var(--foreground) / 0.06)" vertical={false} />
+              <XAxis dataKey="scenario" tick={{ fontSize: 11, fill: "hsl(var(--foreground) / 0.6)" }} stroke="hsl(var(--foreground) / 0.15)" tickLine={false} axisLine={false} />
+              <YAxis hide />
+              <Tooltip
+                contentStyle={{ background: "hsl(0 0% 100% / 0.92)", backdropFilter: "blur(12px)", border: "1px solid hsl(var(--foreground) / 0.1)", borderRadius: 12, fontSize: 12, boxShadow: "0 10px 40px hsl(var(--primary) / 0.15)" }}
+                formatter={(v: number) => [`${(v / 1000).toFixed(0)}k €`]}
+              />
+              <Legend wrapperStyle={{ fontSize: 11, paddingTop: 8 }} />
+              <Bar dataKey="net" stackId="a" fill="hsl(var(--accent))" radius={[0, 0, 0, 0]} name="Net perçu" />
+              <Bar dataKey="fiscalite" stackId="a" fill="hsl(var(--primary))" radius={[8, 8, 0, 0]} name="Fiscalité & charges" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
-
-      <div className="h-[140px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} barSize={24}>
-            <XAxis dataKey="scenario" tick={{ fontSize: 9 }} stroke="hsl(210,8%,46%)" tickLine={false} axisLine={false} />
-            <YAxis hide />
-            <Tooltip
-              contentStyle={{ background: "hsl(40,15%,99%)", border: "1px solid hsl(40,10%,88%)", borderRadius: 4, fontSize: 11 }}
-              formatter={(v: number) => [`${(v / 1000).toFixed(0)}k €`]}
-            />
-            <Bar dataKey="salaire" stackId="a" fill="hsl(32,30%,55%)" radius={[0, 0, 0, 0]} name="Net perçu" />
-            <Bar dataKey="fiscalite" stackId="a" fill="hsl(210,25%,18%)" radius={[3, 3, 0, 0]} name="Fiscalité" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      <p className="text-[11px] text-muted-foreground text-center border-t border-border pt-2">
-        Comparez salaire, dividendes et holding — simulation indicative.
-      </p>
-    </div>
+    </SimulatorShell>
   );
 }
