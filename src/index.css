@@ -502,49 +502,40 @@
     z-index: 2;
   }
 
-  /* Standalone fade divider — to drop between two sections */
+  /* Standalone fade divider — invisible glass blend between two sections */
   .section-fade {
     position: relative;
-    height: 120px;
-    margin-top: -60px;
-    margin-bottom: -60px;
+    margin-top: -1px;
+    margin-bottom: -1px;
     pointer-events: none;
     z-index: 5;
   }
   .section-fade-light {
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      hsl(220 30% 97% / 0.4) 30%,
-      hsl(220 30% 97% / 0.8) 50%,
-      hsl(220 30% 97% / 0.4) 70%,
-      transparent 100%
-    );
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: hsl(220 30% 97%);
   }
   .section-fade-dark {
+    background: hsl(224 60% 7%);
+  }
+  /* Light → Dark transition (ultra-smooth, no visible band) */
+  .section-fade-to-dark {
     background: linear-gradient(
       180deg,
-      transparent 0%,
-      hsl(224 60% 7% / 0.4) 30%,
-      hsl(224 60% 7% / 0.85) 50%,
-      hsl(224 60% 7% / 0.4) 70%,
-      transparent 100%
+      hsl(220 30% 97%) 0%,
+      hsl(220 30% 92%) 25%,
+      hsl(222 40% 40%) 60%,
+      hsl(223 55% 18%) 85%,
+      hsl(224 60% 7%) 100%
     );
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  /* Light → Dark transition (and vice versa) */
-  .section-fade-to-dark {
-    background: linear-gradient(180deg, hsl(220 30% 97%) 0%, hsl(222 45% 30% / 0.6) 50%, hsl(224 60% 7%) 100%);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
   }
   .section-fade-to-light {
-    background: linear-gradient(180deg, hsl(224 60% 7%) 0%, hsl(222 45% 30% / 0.6) 50%, hsl(220 30% 97%) 100%);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: linear-gradient(
+      180deg,
+      hsl(224 60% 7%) 0%,
+      hsl(223 55% 18%) 15%,
+      hsl(222 40% 40%) 40%,
+      hsl(220 30% 92%) 75%,
+      hsl(220 30% 97%) 100%
+    );
   }
 
   /* Soft mask fade — uses CSS mask for ultra-clean edge blending */
