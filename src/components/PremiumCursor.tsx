@@ -79,13 +79,19 @@ export default function PremiumCursor() {
         style={{
           x: sx,
           y: sy,
-          width: ringSize,
-          height: ringSize,
           translateX: "-50%",
           translateY: "-50%",
           border: "1px solid hsl(0 0% 100% / 0.85)",
+        }}
+        animate={{
+          width: ringSize,
+          height: ringSize,
           opacity: hidden ? 0 : 1,
-          transition: "width 220ms cubic-bezier(0.22,1,0.36,1), height 220ms cubic-bezier(0.22,1,0.36,1), opacity 250ms ease",
+        }}
+        transition={{
+          width: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+          height: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+          opacity: { duration: 0.25, ease: "easeOut" },
         }}
       >
         {variant !== "default" && (
@@ -103,9 +109,9 @@ export default function PremiumCursor() {
           y: dotY,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: hidden || variant !== "default" ? 0 : 1,
-          transition: "opacity 200ms ease",
         }}
+        animate={{ opacity: hidden || variant !== "default" ? 0 : 1 }}
+        transition={{ opacity: { duration: 0.2, ease: "easeOut" } }}
       />
     </>
   );
